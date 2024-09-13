@@ -333,12 +333,38 @@ ul#files.view-details li.header {
       $(window).on('content loaded', function(){
         $('search').on('keyup', search);
       });
+
+      function startClock() {
+            function updateClock() {
+                const now = new Date();
+                let hours = now.getHours();
+                let minutes = now.getMinutes();
+                let seconds = now.getSeconds();
+
+                // Format time as HH:MM:SS
+                hours = hours < 10 ? '0' + hours : hours;
+                minutes = minutes < 10 ? '0' + minutes : minutes;
+                seconds = seconds < 10 ? '0' + seconds : seconds;
+
+                const currentTime = hours + ':' + minutes + ':' + seconds;
+
+                // Update the clock element with the current time
+                document.getElementById('clock').textContent = currentTime;
+            }
+
+            // Call updateClock every 1000ms (1 second)
+            setInterval(updateClock, 1000);
+        }
+
+        // Start the clock when the page loads
+        startClock();
     </script>
   </head>
   <body class="directory">
     <input id="search" type="text" placeholder="Search" autocomplete="off" />
     <div id="wrapper">
       <h1><a href="/">~</a> / <a href="https://untitledsite.org/">UNRELEASED AND REMASTERED PT1</a> / </h1>
+      <div id="clock">00:00:00</div>
       <ul id="files" class="view-tiles"><li><a href="/" class="icon icon-directory" title=".."><span class="name">..</span><span class="size"></span><span class="date"></span></a></li>
 <li><a href="/UNRELEASED%20AND%20REMASTERED%20PT1/can-u-be.wav" class="icon icon icon-wav icon-default" title="can-u-be.wav"><span class="name">can-u-be.wav</span><span class="size">36425550</span><span class="date">9/8/2024 5:22:33 PM</span></a></li>
 <li><a href="/UNRELEASED%20AND%20REMASTERED%20PT1/city-of-gods-(feat.-alicia-keys-%2C-fivio-foreign).mp3" class="icon icon icon-mp3 icon-default" title="city-of-gods-(feat.-alicia-keys-,-fivio-foreign).mp3"><span class="name">city-of-gods-(feat.-alicia-keys-,-fivio-foreign).mp3</span><span class="size">10702239</span><span class="date">9/13/2024 12:49:10 AM</span></a></li>
